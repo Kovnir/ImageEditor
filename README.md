@@ -11,5 +11,4 @@ Develoment is over, but if you have interesting ideas, or think, that some metho
 ## Contacts
 
 Mail: Kovnir.alik@gmail.com
-
 VK: http://vk.com/akovnir
