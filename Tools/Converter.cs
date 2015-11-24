@@ -4,6 +4,11 @@ using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Numerics;
 
+/// <summary>
+/// Lightweight library for image manipulation.
+/// Development is here:
+/// https://github.com/Kovnir/ImageEditor
+/// </summary>
 namespace ImageEditor
 {
     /// <summary>
