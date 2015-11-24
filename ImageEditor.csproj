@@ -54,7 +54,7 @@
     <Compile Include="Tools\ImageExtentions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="dll\ImageEditor_v1_0.dll" />
+    <Content Include="dll\ImageEditor.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
