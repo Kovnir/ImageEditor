@@ -3,9 +3,9 @@ Lightweight library for image manipulation on .NET
 
 ## Оглавление
 
-- [Description](#Description)
-- [Classes](#Classes)
-- [Integration samples](#Integration samples)
+- [Description](#description)
+- [Classes](#classes)
+- [Integration samples](#integration samples)
   - [ИЗМЕНЕНИЕ ИЗОБРАЖЕНИЯ](#ИЗМЕНЕНИЕ ИЗОБРАЖЕНИЯ)
     - [Пример 1](#Пример 1)
     - [Пример 2](#Пример 2)
