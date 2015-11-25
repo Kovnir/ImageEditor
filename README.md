@@ -1,43 +1,31 @@
 # ImageEditor
-Lightweight library for image manipulation on .NET
+Легковесная библиотека для работы с изображениями на .NET
 
 ## Оглавление
 
-- [Description](#description)
-- [Classes](#classes)
-- [Integration samples](#integration-samples)
+- [Описание](#Описание)
+- [Классы](#Классы)
+- [Примеры интеграции](#Примеры-интеграции)
   - [Изменение изображения](#Изменение-изображения)
-    - [Пример 1](#Пример-1)
-    - [Пример 2](#Пример-2)
-    - [Пример 3](#Пример-3)
-    - [Пример 4](#Пример-4)
-    - [Пример 5](#Пример-5)
-    - [Пример 6](#Пример-6)
   - [Работа с каналами](#Работа-с-каналами)
-    - [Пример 1](#Пример-1)
-    - [Пример 2](#Пример-2)
   - [Загрузка изображения](#Загрузка-изображения)
-    - [Пример 1](#Пример-1)
-    - [Пример 2](#Пример-2)
   - [Перевод в массивы](#Перевод-в-массивы)
-    - [Пример 1](#Пример-1)
-    - [Пример 2](#Пример-2)
-    - [Пример 3](#Пример-3)
   - [Свёртка](#Свёртка)
-    - [Пример 1](#Пример-1)
-    - [Пример 2](#Пример-2)
+- [Примеры работы](#Примеры-работы)
+- [Контакты](#Контакты)
+
+## Описание
+
+Библиотека была разработана как часть дипломной работы. Она включает в себя ещё три части:
+[Библиотека восстановления расфокуссированных изображений](github.com/xsimbvx/ImageRecovery), [Пример интеграции этой библиотеки](github.com/xsimbvx/IRIntegration) и [Модифицированный алгоритм восстановления изображений](github.com/xsimbvx/DeblurModification).
+Проект был собран в Microsoft Visual Studio 2015.
+
+Библиотека по большей части представляет собой реализацию функций пакета прикладных программ **MATLAB** для работы с изображениями, который в дальнейшем используются в библиотеке востановления изображений.
 
 
-## Description
+## Классы
 
-Library was developed as part of diploma. That include three more parts:
-[Delbluring libruary](github.com/xsimbvx/ImageRecovery), [Integration sample](github.com/xsimbvx/IRIntegration) and [Modification of delbluring algorithms](github.com/xsimbvx/DeblurModification).
-Project was builded in Microsoft Visual Studio 2015.
-
-Библиотека по большей части представляет собой реализацию функций пакета прикладных программ MATLAB для работы с изображениями, который в дальнейшем используются в библиотеке востановления изображений. Библиотека включает в себя несколько файлов.
-
-
-## Classes
+Библиотека включает в себя несколько классов:
 
 Class | Description
 ------------ | -------------
@@ -49,7 +37,7 @@ Class | Description
 ***ImageExtentions.cs*** | Содержит класс *ImageExtentions* - реализующий методы-расширения класса Image, которые удобны для редактирования изображений. В том числе: масштабирование, несколького методов добавления гауссового шума, перевод изображения в чернобелое по алгоритму MATLAB, вычленение конкретного канала, зеркальное расширение изображения и пр.
 
 
-## Integration samples
+## Примеры интеграции
 
 ### Изменение изображения
 
@@ -218,7 +206,7 @@ Class | Description
 
 Второй вариант:
 
-```
+```c#
         image2 = Filters.MotionBlurFilter.Convolution(image1);
 ```
 
@@ -232,13 +220,59 @@ ConvolutionFilter filter = new ConvolutionFilter("custom filter",
 image2 = image1.Convolution(filter, ConvolutionFilter.ConvolutionMode.collapse, Channel.RED | Channel.GREEN);
 ```
 
-## Examples (примеры работы)
+## Examples
 
+Несколько картинок для примера работы библиотеки.
 
+Оргинал изображения:
+
+![](/SampleImages/len_original.png)
+
+Размытие по Гауссу 5x5:
+
+```c#
+image.Convolution(Filters.Gaussian5x5BlurFilter);
+```
+![](/SampleImages/len_GaussianBlur5x5.png)
+
+Смаз слева на право:
+
+```c#
+image.Convolution(Filters.MotionBlurLeftToRightFilter);
+```
+![](/SampleImages/len_MotionBlurLeftToRightFilter.png)
+
+Фильтр резкости 3x3:
+
+```c#
+image.Convolution(Filters.Sharpen3x3FactorFilter);
+```
+![](/SampleImages/len_Sharpen3x3FactorFilter.png)
+
+Выделение горизонтальных границ 3x3:
+
+```c#
+image1.Convolution(Filters.HorizontalEdgeDetectionFilter);
+```
+![](/SampleImages/len_HorizontalEdgeDetectionFilter.png)
+
+High Pass фильтр 3x3:
+
+```c#
+image.Convolution(Filters.HighPass3x3Filter);
+```
+![](/SampleImages/len_HighPass.png)
+
+Получение спектра изображения:
+
+```c#
+image1.GetSpectrum();
+```
+![](/SampleImages/len_Spectr.png)
 
 ## Contacts
 
-Develoment is over, but if you have interesting ideas, or think, that some methods work bad or just slow - let me know it!
+Разработка закончена, но если у Вас есть интересные идеи или Вы заметили, что какие-то методы работает плохо - дайте мне знать!
 
 * mail: kovnir.alik@gmail.com
 * vk: http://vk.com/akovnir
