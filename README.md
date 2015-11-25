@@ -26,12 +26,51 @@ Class | Description
 
 Integration sample you can find in Sample.cs
 
-```javascript
-function fancyAlert(arg) {
-  if(arg) {
-    $.facebox({div:'#foo'})
-  }
-}
+```с#
+        /* ----------------------------- 1. ИЗМЕНЕНИЕ ИЗОБРАЖЕНИЯ ---------------------------------- */
+
+        //Пример 1
+        //Запишем в image2 находится image1, отмасштабируемый до размера 100 (ширина) и 200 (высота)
+        image2 = image1.Scale(100, 200);
+
+        //Пример 2
+        //Запишем в image2 image1, уменьшиный в 2 раза
+        image2 = image1.Scale(image1.Width / 2, image1.Height / 2);
+
+        //Пример 3
+        //Попробуем задать отрицательные значения размеров
+        try
+        {
+        //      image2 = image1.Scale(-1, -3);                      //отрицательные размеры породят исключние
+        }
+        catch (ArgumentException ex)
+        {
+            MessageBox.Show(ex.Message, "Scale exeption");
+            return;
+        }
+        //В случае неуверенности в значениях размеров, заключайте вызов функции ы блок try-catch!
+
+        //Пример 4
+        //Добавим к image1 аддитивный шум в соотношении шум/полезный сигнал 1 к 9. Запишем результвт в image2
+
+        image2 = image1.Noize(1f / (1 + 9));
+
+        //Пример 5
+        //Добавим к image1 аддитивный шум в соотношении шум/полезный сигнал 1 к 2. Запишем результвт в image2,
+        //а шум в три отдельные матрицы по одной на каждый цветовой канал.
+
+        byte[,] rNoize = null;
+        byte[,] gNoize = null;
+        byte[,] bNoize = null;
+        image2 = image1.Noize(1f / (1 + 2), ref rNoize, ref gNoize, ref bNoize);
+
+        //фунуция SingleNoize работает так же, как Noize, только накладывет на все каналы один и тот же шум
+
+        //Пример 6
+        //Интуитивно продлим image1 на 10 пикселей со всех сторон. Запишем результвт в image2
+
+        image2 = image1.Expand(10);
+
 ```
 
 
