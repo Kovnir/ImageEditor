@@ -218,9 +218,9 @@ ConvolutionFilter filter = new ConvolutionFilter("custom filter",
 image2 = image1.Convolution(filter, ConvolutionFilter.ConvolutionMode.collapse, Channel.RED | Channel.GREEN);
 ```
 
-## Examples (примеры работы)
+## Examples
 
-[GitHub Logo](/SampleImages/len_original.png)
+![GitHub Logo](/SampleImages/len_original.png)
 
 
 
