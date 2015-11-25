@@ -26,7 +26,7 @@ Class | Description
 
 Integration sample you can find in Sample.cs
 
-```highlight highlight-c#
+```c#
         /* ----------------------------- 1. ИЗМЕНЕНИЕ ИЗОБРАЖЕНИЯ ---------------------------------- */
 
         //Пример 1
