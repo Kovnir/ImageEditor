@@ -234,6 +234,8 @@ image2 = image1.Convolution(filter, ConvolutionFilter.ConvolutionMode.collapse, 
 
 ## Examples (примеры работы)
 
+[GitHub Logo](/SampleImages/len_original.png)
+
 
 
 ## Contacts
