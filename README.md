@@ -223,47 +223,48 @@ image2 = image1.Convolution(filter, ConvolutionFilter.ConvolutionMode.collapse, 
 Несколько картинок для примера работы библиотеки.
 
 Оргинал изображения:
+
 ![](/SampleImages/len_original.png)
 
 Размытие по Гауссу 5x5:
 
 ```c#
-        image.Convolution(Filters.Gaussian5x5BlurFilter)
+image.Convolution(Filters.Gaussian5x5BlurFilter);
 ```
 ![](/SampleImages/len_GaussianBlur5x5.png)
 
 Смаз слева на право:
 
 ```c#
-        image.Convolution(Filters.MotionBlurLeftToRightFilter)
+image.Convolution(Filters.MotionBlurLeftToRightFilter);
 ```
 ![](/SampleImages/len_MotionBlurLeftToRightFilter.png)
 
 Фильтр резкости 3x3:
 
 ```c#
-        image.Convolution(Filters.Sharpen3x3FactorFilter)
+image.Convolution(Filters.Sharpen3x3FactorFilter);
 ```
 ![](/SampleImages/len_Sharpen3x3FactorFilter.png)
 
 Выделение горизонтальных границ 3x3:
 
 ```c#
-        image1.Convolution(Filters.HorizontalEdgeDetectionFilter)
+image1.Convolution(Filters.HorizontalEdgeDetectionFilter);
 ```
 ![](/SampleImages/len_HorizontalEdgeDetectionFilter.png)
 
 High Pass фильтр 3x3:
 
 ```c#
-        image.Convolution(Filters.HighPass3x3Filter)
+image.Convolution(Filters.HighPass3x3Filter);
 ```
 ![](/SampleImages/len_HighPass.png)
 
 Получение спектра изображения:
 
 ```c#
-        image1.GetSpectrum()
+image1.GetSpectrum();
 ```
 ![](/SampleImages/len_Spectr.png)
 
