@@ -1,29 +1,31 @@
 # ImageEditor
-Lightweight library for image manipulation on .NET
+Легковесная библиотека для работы с изображениями на .NET
 
 ## Оглавление
 
-- [Description](#description)
-- [Classes](#classes)
-- [Integration samples](#integration-samples)
+- [Описание](#Описание)
+- [Классы](#Классы)
+- [Примеры интеграции](#Примеры-интеграции)
   - [Изменение изображения](#Изменение-изображения)
   - [Работа с каналами](#Работа-с-каналами)
   - [Загрузка изображения](#Загрузка-изображения)
   - [Перевод в массивы](#Перевод-в-массивы)
   - [Свёртка](#Свёртка)
-- [Examples](#examples)
-- [Contacts](#contacts)
+- [Примеры работы](#Примеры-работы)
+- [Контакты](#Контакты)
 
-## Description
+## Описание
 
-Library was developed as part of diploma. That include three more parts:
-[Delbluring libruary](github.com/xsimbvx/ImageRecovery), [Integration sample](github.com/xsimbvx/IRIntegration) and [Modification of delbluring algorithms](github.com/xsimbvx/DeblurModification).
-Project was builded in Microsoft Visual Studio 2015.
+Библиотека была разработана как часть дипломной работы. Она включает в себя ещё три части:
+[Библиотека восстановления расфокуссированных изображений](github.com/xsimbvx/ImageRecovery), [Пример интеграции этой библиотеки](github.com/xsimbvx/IRIntegration) и [Модифицированный алгоритм восстановления изображений](github.com/xsimbvx/DeblurModification).
+Проект был собран в Microsoft Visual Studio 2015.
 
-Библиотека по большей части представляет собой реализацию функций пакета прикладных программ MATLAB для работы с изображениями, который в дальнейшем используются в библиотеке востановления изображений. Библиотека включает в себя несколько файлов.
+Библиотека по большей части представляет собой реализацию функций пакета прикладных программ **MATLAB** для работы с изображениями, который в дальнейшем используются в библиотеке востановления изображений.
 
 
-## Classes
+## Классы
+
+Библиотека включает в себя несколько классов:
 
 Class | Description
 ------------ | -------------
@@ -35,7 +37,7 @@ Class | Description
 ***ImageExtentions.cs*** | Содержит класс *ImageExtentions* - реализующий методы-расширения класса Image, которые удобны для редактирования изображений. В том числе: масштабирование, несколького методов добавления гауссового шума, перевод изображения в чернобелое по алгоритму MATLAB, вычленение конкретного канала, зеркальное расширение изображения и пр.
 
 
-## Integration samples
+## Примеры интеграции
 
 ### Изменение изображения
 
@@ -270,7 +272,7 @@ image1.GetSpectrum();
 
 ## Contacts
 
-Develoment is over, but if you have interesting ideas, or think, that some methods work bad or just slow - let me know it!
+Разработка закончена, но если у Вас есть интересные идеи или Вы заметили, что какие-то методы работает плохо - дайте мне знать!
 
 * mail: kovnir.alik@gmail.com
 * vk: http://vk.com/akovnir
