@@ -55,6 +55,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="dll\ImageEditor.dll" />
+    <Content Include="SampleImages\len_HighPass.png" />
+    <Content Include="SampleImages\len_HorizontalEdgeDetectionFilter.png" />
+    <Content Include="SampleImages\len_GaussianBlur5x5.png" />
+    <Content Include="SampleImages\len_MotionBlurLeftToRightFilter.png" />
+    <Content Include="SampleImages\len_original.png" />
+    <Content Include="SampleImages\len_Sharpen3x3FactorFilter.png" />
+    <Content Include="SampleImages\len_Spectr.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="READMERUS.md" />
