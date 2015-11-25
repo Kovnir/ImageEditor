@@ -52,6 +52,7 @@
     <Compile Include="Tools\Filters.cs" />
     <Compile Include="Tools\Fourier.cs" />
     <Compile Include="Tools\ImageExtentions.cs" />
+    <Compile Include="Tools\OpticalTransferFunction.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="dll\ImageEditor.dll" />

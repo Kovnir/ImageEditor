@@ -362,6 +362,14 @@ namespace ImageEditor
         }
 
 
+        public static Image GetSpectrum(this Image source)
+        {
+            Complex[,] fBlue = Fourier.Transform(Converter.ToComplexMatrix(source.OnlyBlue()));
+            Complex[,] fGreen = Fourier.Transform(Converter.ToComplexMatrix(source.OnlyGreen()));
+            Complex[,] fRed = Fourier.Transform(Converter.ToComplexMatrix(source.OnlyRed()));
+            return Converter.ToImage(fRed, fGreen, fBlue);
+        }
+
         public static Image Expand(this Image source, int offset)
         {
             if (source == null) return null;
