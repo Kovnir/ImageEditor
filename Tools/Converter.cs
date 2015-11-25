@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing.Imaging;
 using System.Drawing;
 using System.Runtime.InteropServices;
@@ -373,8 +374,32 @@ namespace ImageEditor
             bmp.UnlockBits(bmpData);                                                //разблокируем набор данных изображения в памяти.
             return byteArray;                                                         //возвращаем массив
         }
-        
+
         /*-------------------------------------------------------------------------------*/
+
+        /// <summary>
+        /// Загружает изображение из трёх матриц байт, по одому на канала.
+        /// </summary>
+        /// <param name="red">Красный канал.</param>
+        /// <param name="green">Зелёный канал.</param>
+        /// <param name="blue">Голубой канал.</param>
+        /// <param name="width">Ширина.</param>
+        /// <returns>
+        /// полученное изображение
+        /// </returns>
+        public static Image ToImage(Complex[,] red, Complex[,] green, Complex[,] blue, int width)
+        {
+            List<Complex> resultImage = new List<Complex>();
+            for (int i = 0; i < red.GetLength(0); i++)
+                for (int j = 0; j < red.GetLength(1); j++)
+                {
+                    resultImage.Add(blue[i, j]);
+                    resultImage.Add(green[i, j]);
+                    resultImage.Add(red[i, j]);
+                    resultImage.Add(255);
+                }
+            return Converter.ToImage(resultImage.ToArray(), red.GetLength(1));
+        }
 
         /// <summary>
         /// Загружает изображение из массива байт.
