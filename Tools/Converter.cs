@@ -383,11 +383,10 @@ namespace ImageEditor
         /// <param name="red">Красный канал.</param>
         /// <param name="green">Зелёный канал.</param>
         /// <param name="blue">Голубой канал.</param>
-        /// <param name="width">Ширина.</param>
         /// <returns>
         /// полученное изображение
         /// </returns>
-        public static Image ToImage(Complex[,] red, Complex[,] green, Complex[,] blue, int width)
+        public static Image ToImage(Complex[,] red, Complex[,] green, Complex[,] blue)
         {
             List<Complex> resultImage = new List<Complex>();
             for (int i = 0; i < red.GetLength(0); i++)
