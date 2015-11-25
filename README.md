@@ -219,7 +219,7 @@ Class | Description
 Второй вариант:
 
 ```
-image2 = Filters.MotionBlurFilter.Convolution(image1);
+        image2 = Filters.MotionBlurFilter.Convolution(image1);
 ```
 
 #### Пример 2
