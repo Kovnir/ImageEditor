@@ -361,7 +361,11 @@ namespace ImageEditor
             return bmp;                                                             //возвращаем изображение
         }
 
-
+        /// <summary>
+        /// Получает спектр изображения в виде изображения.
+        /// </summary>
+        /// <param name="source">The source.</param>
+        /// <returns></returns>
         public static Image GetSpectrum(this Image source)
         {
             Complex[,] fBlue = Fourier.Transform(Converter.ToComplexMatrix(source.OnlyBlue()));
@@ -370,6 +374,12 @@ namespace ImageEditor
             return Converter.ToImage(fRed, fGreen, fBlue);
         }
 
+        /// <summary>
+        /// Зеркально расширяет изображение на несколько пикселей с каждой стороны
+        /// </summary>
+        /// <param name="source">Исходное изображение.</param>
+        /// <param name="offset">на сколько пикселей расширяем.</param>
+        /// <returns></returns>
         public static Image Expand(this Image source, int offset)
         {
             if (source == null) return null;
