@@ -22,7 +22,7 @@ Class | Description
 ***ImageExtentions.cs*** | Содержит класс *ImageExtentions* - реализующий методы-расширения класса Image, которые удобны для редактирования изображений. В том числе: масштабирование, несколького методов добавления гауссового шума, перевод изображения в чернобелое по алгоритму MATLAB, вычленение конкретного канала, зеркальное расширение изображения и пр.
 
 
-## Integration
+## Integration samples
 
 ### ИЗМЕНЕНИЕ ИЗОБРАЖЕНИЯ
 
@@ -148,7 +148,7 @@ Class | Description
         image2 = Converter.ToImage(array, 3, true);          //загружаем его.
 ```
 
-###  4. ПЕРЕВОД В МАССИВЫ
+### ПЕРЕВОД В МАССИВЫ
 
 #### Пример 1
 
@@ -212,6 +212,10 @@ ConvolutionFilter filter = new ConvolutionFilter("custom filter",
     new double[3, 3] { { 0.1d, 0.1d, 0.1d }, { 0.2d, 0.4d, 0.2d }, { 0.1d, 0.1d, 0.1d } }, 1d / 1.2d, 0);
 image2 = image1.Convolution(filter, ConvolutionFilter.ConvolutionMode.collapse, Channel.RED | Channel.GREEN);
 ```
+
+## Examples (примеры работы)
+
+
 
 ## Contacts
 
