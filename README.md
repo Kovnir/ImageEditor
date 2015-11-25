@@ -150,7 +150,7 @@ Class | Description
 
 ###  4. ПЕРЕВОД В МАССИВЫ
 
-Пример 1
+* Пример 1
 
 Загрузить данные в image2 из массива байт, полученного из image1
 
@@ -161,7 +161,7 @@ Class | Description
         image2 = Converter.ToImage(Converter.ToByteArray(image1), image1.Width);
 ```
 
-Пример 2
+* Пример 2
 
 Преобразовать изображение image1 в маску яркости.
 
@@ -169,7 +169,7 @@ Class | Description
         array = Converter.ToByteArray(image1, true);
 ```
 
-Пример 3
+* Пример 3
 
 Преобразовать яркость изображение image1 в матрицу комплексных чисел.
 
@@ -208,9 +208,9 @@ image2 = Filters.MotionBlurFilter.Convolution(image1);
 Не увеличиваем предваительно изображение. Запишем результвт в image2
 
 ```c#
-        ConvolutionFilter filter = new ConvolutionFilter("custom filter",
-            new double[3, 3] { { 0.1d, 0.1d, 0.1d }, { 0.2d, 0.4d, 0.2d }, { 0.1d, 0.1d, 0.1d } }, 1d / 1.2d, 0);
-        image2 = image1.Convolution(filter, ConvolutionFilter.ConvolutionMode.collapse, Channel.RED | Channel.GREEN);
+ConvolutionFilter filter = new ConvolutionFilter("custom filter",
+    new double[3, 3] { { 0.1d, 0.1d, 0.1d }, { 0.2d, 0.4d, 0.2d }, { 0.1d, 0.1d, 0.1d } }, 1d / 1.2d, 0);
+image2 = image1.Convolution(filter, ConvolutionFilter.ConvolutionMode.collapse, Channel.RED | Channel.GREEN);
 ```
 
 ## Contacts
