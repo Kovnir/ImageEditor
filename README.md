@@ -220,7 +220,7 @@ image2 = image1.Convolution(filter, ConvolutionFilter.ConvolutionMode.collapse, 
 
 ## Examples
 
-![GitHub Logo](/SampleImages/len_original.png)
+![](/SampleImages/len_original.png)
 
 
 
