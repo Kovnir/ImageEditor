@@ -274,7 +274,7 @@ image1.GetSpectrum();
 ## Загрузка
 
 * [ImageEditor.dll](https://github.com/Kovnir/ImageEditor/blob/master/dll/ImageEditor.dll?raw=true)
-* [source code](https://github.com/Kovnir/ImageEditor/archive/master.zip)
+* [Source code](https://github.com/Kovnir/ImageEditor/archive/master.zip)
 
 ## Контакты
 
