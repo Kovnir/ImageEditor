@@ -270,7 +270,11 @@ image1.GetSpectrum();
 ```
 ![](/SampleImages/len_Spectr.png)
 
-## Contacts
+## Загрузка
+
+* [ImageEditor.dll](https://github.com/Kovnir/ImageEditor/blob/master/dll/ImageEditor.dll?raw=true)
+* [source code](https://github.com/Kovnir/ImageEditor/archive/master.zip)
+## Контакты
 
 Разработка закончена, но если у Вас есть интересные идеи или Вы заметили, что какие-то методы работают плохо - дайте мне знать!
 
