@@ -364,23 +364,16 @@ namespace ImageEditor
             if (m > n)
                 size = m;
 
-            
             double log = Math.Log(size, 2);
             Complex[,] x;
 
             if (log - Math.Round(log) != 0)
-            {
                 size = (int)Math.Pow(2, (int)log + 1);
-                x = new Complex[size, size];
-                for (int i = 0; i < m; i++)
-                    for (int j = 0; j < n; j++)
-                        x[i,j] = source[i,j];
-            }
-            else
-            {
-                x = (Complex[,])source.Clone();
-            }
-            
+            x = new Complex[size, size];
+            for (int i = 0; i < m; i++)
+                for (int j = 0; j < n; j++)
+                    x[i, j] = source[i, j];
+
             Complex[,] outC = new Complex[size, size];
 
             //преобразуем строки
