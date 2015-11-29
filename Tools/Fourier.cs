@@ -1,15 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Numerics;
 
 namespace ImageEditor
 {
+    /// <summary>
+    /// Класс, осуществляющий преобразования фурье
+    /// </summary>
     public static class Fourier
     {
-
         /// <summary>
         /// Линейное прямое преобразование фурье
         /// </summary>

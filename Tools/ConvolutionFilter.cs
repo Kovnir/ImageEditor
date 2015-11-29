@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Runtime.InteropServices;
 using System.Drawing.Imaging;
 using System.Drawing;
@@ -81,12 +77,16 @@ namespace ImageEditor
 
         public enum ConvolutionMode {collapse, expand};
 
-        
+
         /// <summary>
         /// Функция свёртки
         /// </summary>
-        /// <param name="source"></param>
-        /// <returns></returns>
+        /// <param name="sourceImage">Исходное изображение</param>
+        /// <param name="mode">Режим свёртки</param>
+        /// <param name="channels">Каналы, над которыми проводится операция свёртки</param>
+        /// <returns>
+        /// Результирующее изображение
+        /// </returns>
         public Image Convolution(Image sourceImage, 
             ConvolutionMode mode = ConvolutionMode.collapse, 
             int channels = (Channel.BLUE | Channel.RED | Channel.GREEN))
@@ -135,9 +135,7 @@ namespace ImageEditor
             double blue = 0.0;
             double green = 0.0;
             double red = 0.0;
-
-
-
+            
             int calcOffset = 0;
 
             int byteOffset = 0;
@@ -246,6 +244,86 @@ namespace ImageEditor
             return resultBitmap;
         }
 
+
+        /// <summary>
+        /// Конволюция (свёртка) в частотной области
+        /// </summary>
+        /// <param name="sourceImage">исходное изображение</param>
+        /// <returns>искаженное изображение</returns>
+        public Image FastConvolution(Image sourceImage)
+        {
+            int height = sourceImage.Height;
+            int width = sourceImage.Width;
+            int filterSize = this.filterMatrix.GetLength(0);       //размер PSF
+            int filterHalfSize = (filterSize - 1) / 2 + 1;                //центр PSF
+            Image expandedImage = sourceImage.Expand(filterHalfSize);
+            int expHeight = expandedImage.Height;
+            int expWidth = expandedImage.Width;
+            double[] image = Converter.ToDoubleArray(expandedImage);
+            double[,] red = new double[expHeight, expWidth];
+            double[,] green = new double[expHeight, expWidth];
+            double[,] blue = new double[expHeight, expWidth];
+            int index = 0;
+            for (int i = 0; i < expHeight; i++)
+                for (int j = 0; j < expWidth; j++)
+                {
+                    blue[i, j] = image[index];
+                    green[i, j] = image[index + 1];
+                    red[i, j] = image[index + 2];
+                    index += 4;
+                }
+
+            Complex[,] redFourier = Fourier.FastTransform(Converter.ToComplexMatrix(red));
+            Complex[,] greenFourier = Fourier.FastTransform(Converter.ToComplexMatrix(green));
+            Complex[,] blueFourier = Fourier.FastTransform(Converter.ToComplexMatrix(blue));
+            int newSize = redFourier.GetLength(0);
+
+            double[,] kernel = this.ExpendedByZero(newSize);
+            Complex[,] kernelFourier = Fourier.FastTransform(Converter.ToComplexMatrix(kernel));
+            for (int u = 0; u < newSize; u++)
+                for (int v = 0; v < newSize; v++)
+                {
+                    redFourier[u, v] *= kernelFourier[u, v];
+                    greenFourier[u, v] *= kernelFourier[u, v];
+                    blueFourier[u, v] *= kernelFourier[u, v];
+                }
+            Complex[,] newRed = Fourier.IFastTransform(redFourier, expHeight, expWidth);
+            Complex[,] newGreen = Fourier.IFastTransform(greenFourier, expHeight, expWidth);
+            Complex[,] newBlue = Fourier.IFastTransform(blueFourier, expHeight, expWidth);
+
+            Complex[,] resRed = new Complex[height, width];
+            Complex[,] resGreen = new Complex[height, width];
+            Complex[,] resBlue = new Complex[height, width];
+            for (int i = 0; i < height; i++)
+                for (int j = 0; j < width; j++)
+                {
+                    resRed[i, j] = Math.Round(newRed[i + filterHalfSize + 1, j + filterHalfSize + 1].Real);
+                    resGreen[i, j] = Math.Round(newGreen[i + filterHalfSize + 1, j + filterHalfSize + 1].Real);
+                    resBlue[i, j] = Math.Round(newBlue[i + filterHalfSize + 1, j + filterHalfSize + 1].Real);
+                }
+            Image result = Converter.ToImage(resRed, resGreen, resBlue);
+            return result;
+        }
+
+        /// <summary>
+        /// Расширение матрицы до квадратной нового размер, путём добавления нулей.
+        /// </summary>
+        /// <param name="newSize">новая размерность</param>
+        /// <returns>Результирующее изображение</returns>
+        public double[,] ExpendedByZero(int newSize)
+        {
+            double[,] data = this.normalizedFilterMatrix;
+            double[,] newData = new double[newSize, newSize];
+            for (int i = 0; i < newSize; i++)
+                for (int j = 0; j < newSize; j++)
+                    newData[i, j] = 0;
+
+            for (int i = 0; i < data.GetLength(0); i++)
+                for (int j = 0; j < data.GetLength(1); j++)
+                    newData[i, j] = data[i, j];
+            return newData;
+        }
+
     }
 
     public static class Channel
@@ -257,11 +335,32 @@ namespace ImageEditor
 
     public static partial class ImageExtentions
     {
+        /// <summary>
+        /// Функция свёртки
+        /// </summary>
+        /// <param name="source">Исходное изображение</param>
+        /// <param name="filter">Фильтр</param>
+        /// <param name="mode">Режим свёртки</param>
+        /// <param name="channels">Каналы, над которыми проводится операция свёртки</param>
+        /// <returns>
+        /// Результирующее изображение
+        /// </returns>
         public static Image Convolution(this Image source, ConvolutionFilter filter,
             ConvolutionFilter.ConvolutionMode mode = ConvolutionFilter.ConvolutionMode.collapse, 
             int channels = (Channel.BLUE | Channel.RED | Channel.GREEN))
         {
             return filter.Convolution(new Bitmap(source), mode, channels);
+        }
+
+        /// <summary>
+        /// Конволюция (свёртка) в частотной области
+        /// </summary>
+        /// <param name="source">Исходное изображение.</param>
+        /// <param name="filter">Фильтр.</param>
+        /// <returns></returns>
+        public static Image FastConvolution(this Image source, ConvolutionFilter filter)
+        {
+            return filter.FastConvolution(source);
         }
     }
 
