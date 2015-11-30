@@ -265,7 +265,7 @@ image.Convolution(Filters.HighPass3x3Filter);
 ![](/SampleImages/len_HighPass.png)
 
 Получение спектра изображения:
-ч
+
 ```c#
 image1.GetSpectrum();
 ```
