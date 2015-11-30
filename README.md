@@ -221,7 +221,7 @@ ConvolutionFilter filter = new ConvolutionFilter("custom filter",
 image2 = image1.Convolution(filter, ConvolutionFilter.ConvolutionMode.collapse, Channel.RED | Channel.GREEN);
 ```
 
-## Examples
+## Примеры работы
 
 Несколько картинок для примера работы библиотеки.
 
