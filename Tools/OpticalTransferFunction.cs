@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Numerics;
-using ImageEditor;
-using System.Drawing;
 
 namespace ImageEditor
 {
@@ -13,7 +7,7 @@ namespace ImageEditor
     /// Содержит методы расширения класса ConvolutionFilter для преобразования фильтра 
     /// в форму частотно-контрастной характеристики и обратно.
     /// </summary>
-    class OpticalTransferFunction
+    public class OpticalTransferFunction
     {
         /// <summary>
         /// Возведение в квадрат модуля косплексного числа

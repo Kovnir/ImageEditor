@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 
 namespace ImageEditor.Exceptions
@@ -11,7 +7,7 @@ namespace ImageEditor.Exceptions
     /// Исключения ядра искажение / фильтра
     /// </summary>
     [Serializable()]
-    class InvalidKernelException : System.Exception
+    public class InvalidKernelException : System.Exception
     {
         public InvalidKernelException() : base() { }
         public InvalidKernelException(string message) : base(message) { }
